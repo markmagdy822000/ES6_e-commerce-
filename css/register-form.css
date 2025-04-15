@@ -1,4 +1,14 @@
 [class|="error"] {
   display: none;
   color: red;
+  margin-top: 0.25rem;
 }
+
+.register-form-container {
+  width: 50%;
+  margin: 0 auto;
+}
+
+/* h1 {
+  margin: 20px auto;
+} */
