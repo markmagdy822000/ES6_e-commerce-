@@ -1,4 +1,7 @@
-// catch elements
+import { validateConfirmPassword, validateName, validateEmail, validatePassword } from "./validations.js"
+import { getUsers, addUserAccount, isUserExists } from "./auth.js"
+
+// ========= catch elements =========
 let reg_form = document.getElementById("register-form")
 
 let inputs = reg_form.getElementsByTagName("input")
@@ -14,76 +17,41 @@ let errPass = errors[2]
 let errConf_Pass = errors[3]
 
 
+// =========== event listeners ==========
 
-
-// validation
 nameIn.addEventListener("input", () => {
-    let reg = /^[a-z A-Z]{3,}$/
-    console.log("from name")
-    console.log(nameIn.value)
-    if (!reg.test(nameIn.value)) {
-        errName.style.display = "block"
-    } else {
-        errName.style.display = "none"
-    }
+    validateName(nameIn, errName)
 })
 
 emailIn.addEventListener("input", () => {
-    let reg = /^\w{3,}@[a-zA-Z]{3,}\.[a-zA-Z]{2,3}$/
-    console.log(emailIn.value)
-    if (!reg.test(emailIn.value)) {
-        errEmail.style.display = "block"
-    } else {
-        errEmail.style.display = "none"
-    }
+    validateEmail(emailIn, errEmail)
 })
 
 passIn.addEventListener("input", () => {
-
-    let reg = /[\w]/
-    let special_reg = /[!@#$%^&*()_-]/
-    let reg_capital = /[A-Z]/
-    let reg_small = /[a-z]/
-    let reg_num = /[0-9]/
-    if (
-        !reg.test(passIn.value) ||
-        !special_reg.test(passIn.value) ||
-        !reg_capital.test(passIn.value) ||
-        !reg_small.test(passIn.value) ||
-        !reg_num.test(passIn.value) ||
-        passIn.value.length < 8) {
-        console.log("for pass")
-        errPass.style.display = "block"
-        errPass.innerHTML = "please enter valid password, password must contain special charcter, capital characetr, number, small characters & at least 8 characters"
-    } else {
-        errPass.style.display = "none"
-
-    }
-
-    // if (passIn.value.length < 8) {
-    //     console.log("for pass")
-    //     errPass.style.display = "block"
-    //     errPass.innerHTML = "password must be at least 8 characters "
-    // }
-    // if (passIn.value.length > 16) {
-    //     errPass.style.display = "block"
-    //     errPass.innerHTML = "password can not be more than 16 characters "
-    // }
-    // let special_reg = /^*[!@#$%^&*()_-]/
-    // if (!special_reg.test(passIn.value)) {
-    //     errPass.style.display = "block"
-    //     errPass.innerHTML = "password must contains special character "
-    // }
+    validatePassword(passIn, errPass)
 
 })
-
 confirmPassIn.addEventListener("input", () => {
+    validateConfirmPassword(passIn, confirmPassIn, errConf_Pass)
+})
 
-    if (passIn.value != confirmPassIn.value) {
-        errConf_Pass.style.display = "block"
-        errConf_Pass.innerText = "Confirm password must be the same as password"
-    } else {
-        errConf_Pass.style.display = "none"
+reg_form.addEventListener("submit", (e) => {
+    e.preventDefault()
+
+    if (validateName(nameIn, errName)
+        && validateEmail(emailIn, errEmail)
+        && validatePassword(passIn, errPass)
+        && validateConfirmPassword(passIn, confirmPassIn, errConf_Pass)
+    ) {
+        if (!isUserExists(emailIn.value, passIn.value)) {
+            addUserAccount(nameIn, emailIn, passIn)
+            getUsers()
+            location.assign("./html/login.html")
+        } else {
+            document.getElementsByClassName("error-register")[0].innerText = "user already exists"
+            document.getElementsByClassName("error-register")[0].style.display = "block"
+            console.log("user exists")
+        }
     }
 })
 
