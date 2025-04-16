@@ -16,8 +16,12 @@ let errEmail = errors[1]
 let errPass = errors[2]
 let errConf_Pass = errors[3]
 
+let hasAccount = reg_form.getElementById("hasAccount")
 
 // =========== event listeners ==========
+hasAccount.addEventListener("click", () => {
+    location.assign("./html/login.html")
+})
 
 nameIn.addEventListener("input", () => {
     validateName(nameIn, errName)
