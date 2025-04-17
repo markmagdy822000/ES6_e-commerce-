@@ -16,7 +16,7 @@ let errEmail = errors[1]
 let errPass = errors[2]
 let errConf_Pass = errors[3]
 
-let hasAccount = reg_form.getElementById("hasAccount")
+let hasAccount = reg_form.querySelector("#hasAccount")
 
 // =========== event listeners ==========
 hasAccount.addEventListener("click", () => {

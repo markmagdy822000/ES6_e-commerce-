@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/home.css">
+</head>
+
+<body>
+    <!-- ============== Header nav bar ================== -->
+    <header class="m-3 mb-5">
+        <ul class="nav nav-pills nav-fill">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                        class="bi bi-cart3" viewBox="0 0 16 16">
+                        <path
+                            d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+                    </svg>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">User Name</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Logout</a>
+            </li>
+
+        </ul>
+    </header>
+
+    <!-- ============== Slider ================== -->
+
+    <section class="slider">
+        <div id="carouselExampleIndicators" class="carousel slide">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner d-flex">
+                <div class="carousel-item active">
+                    <img src="../images/slider-1.jpeg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item ">
+                    <img src="../images/slider-2.jpeg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item ">
+                    <img src="../images/slider-3.jpeg" class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- ================ Filter Products ============= -->
+    <ul class="list-group">
+        <li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" checked value="men's clothing" id="firstCheckbox">
+            <label class="form-check-label" for="firstCheckbox">men's clothing</label>
+        </li>
+        <li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" checked value="jewelery" id="secondCheckbox">
+            <label class="form-check-label" for="secondCheckbox">"jewelery"</label>
+        </li>
+        <li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" checked value="electronics" id="thirdCheckbox">
+            <label class="form-check-label" for="thirdCheckbox">electronics</label>
+        </li>
+        <li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" checked value="women's clothing" id="fourthCheckbox">
+            <label class="form-check-label" for="fourthCheckbox">women's clothing</label>
+        </li>
+
+
+    </ul>
+
+    <!-- ============== Products ================== -->
+
+    <div class="row row-cols-1 row-cols-md-3 g-4 products-section">
+
+    </div>
+    <script src="../js/home.js"></script>
+</body>
+
+</html>

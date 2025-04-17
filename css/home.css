@@ -1,0 +1,58 @@
+/* ============= Carousel ============= */
+
+#carouselExampleIndicators {
+  img {
+    height: 500px;
+    object-fit: cover;
+    border-radius: 20px;
+  }
+}
+
+/* move right */
+
+@keyframes right_center {
+  from {
+    transform: translate(1500px);
+    opacity: 0;
+  }
+  to {
+    transform: translate(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes center_left {
+  from {
+    transform: translate(0px);
+    opacity: 1;
+  }
+  to {
+    transform: translate(-1500px);
+    opacity: 0;
+  }
+}
+
+/* move left */
+@keyframes center_right {
+  from {
+    transform: translate(0px);
+    opacity: 1;
+  }
+  to {
+    transform: translate(1500px);
+    opacity: 0;
+  }
+}
+
+@keyframes left_center {
+  from {
+    transform: translate(-1500px);
+    opacity: 0;
+  }
+  to {
+    transform: translate(0px);
+    opacity: 1;
+  }
+}
+
+/* ********* Products ************ */
