@@ -1,0 +1,7 @@
+- LISTEN TO PROJECT RECORD AGAIN
+- 
+- Create footer
+- Logout
+- Make deepseek create better design
+- Animations, css hovering
+- MAKE + ICON   IN hoem page => addToCart()

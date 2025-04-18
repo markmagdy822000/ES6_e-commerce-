@@ -1,2 +1,0 @@
-in register 
-	if fields is emoty it eneters to login ❌

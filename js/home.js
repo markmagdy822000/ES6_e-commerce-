@@ -1,4 +1,10 @@
-import { showDetails } from "../js/details.js";
+
+import { build_navbar } from "./build_components.js";
+import { addToCartById, getProducts } from "../js/helper.js";
+
+// =========================build_navbar==============
+
+// build_navbar()
 
 /* ============= Carousel ============= */
 const next_btn = document.querySelector(".carousel-control-next");
@@ -30,14 +36,7 @@ prev_btn.addEventListener("click", () => updateItem("prev"));
 
 /* ============= Products ============= */
 
-async function getProducts() {
-    let products = await fetch("https://fakestoreapi.com/products")
-    if (!products)
-        return `No products Found!`;
-    products = await ((products.json()))
-    console.log(products)
-    return products
-}
+
 
 // ================= Cards ===============
 
@@ -51,7 +50,7 @@ async function displayProducts(filterdProducts) {
         let product_section = document.createElement("div")
         product_section.innerHTML = `
             <div class="col">
-                <div class="card ">
+                <div class="card" id="${prod.id}">
                     <img src="${prod.image}"  class="card-img-top" alt="">
                     <div class="card-body">
                         <div class="text-card">
@@ -65,10 +64,14 @@ async function displayProducts(filterdProducts) {
             </div>
         `
         products_section.append(product_section)
+
+
+        let add_btn = document.getElementsByClassName("add-btn")[0]
+        add_btn.addEventListener("click", () => {
+            addToCartById(prod.id)
+        })
     })
 }
-
-
 let listGp = document.querySelectorAll(".list-group input[type='checkbox']");
 listGp.forEach((input) => {
     input.addEventListener("change", handleCheckBoxChange)
@@ -102,7 +105,7 @@ async function intialdisplay() {
     let proucts = await getProducts()
     displayProducts(proucts)
 }
-intialdisplay()
+
 
 document.addEventListener("DOMContentLoaded", () => {
     const products_section = document.querySelector(".products-section");
@@ -111,25 +114,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const clickedCard = e.target.closest(".card");
 
         if (clickedCard) {
-            console.log("clicked card:", clickedCard);
-            showDetails(clickedCard)
-
+            localStorage.setItem("prodId", clickedCard.id);
+            location.assign("../html/details.html");
         }
     });
 });
 
-/**
- *  
- * {
-    "id": 1,
-    "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
-    "price": 109.95,
-    "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-    "category": "men's clothing",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-    "rating": {
-      "rate": 3.9,
-      "count": 120
-    }
-  },
- */
+intialdisplay()

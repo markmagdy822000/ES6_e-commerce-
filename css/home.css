@@ -64,14 +64,16 @@
 }
 
 .card {
-  width: 50%;
+  width: 85%;
   object-fit: contain;
   height: 450px;
   margin: 20px auto;
   cursor: pointer;
+  object-fit: contain;
 
   img {
     height: 50%;
+    object-fit: contain;
   }
   .text-card {
     height: 35%;
