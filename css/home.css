@@ -56,3 +56,41 @@
 }
 
 /* ********* Products ************ */
+.list-group {
+  width: 80%;
+  img {
+    width: 10%;
+  }
+}
+
+.card {
+  width: 50%;
+  object-fit: contain;
+  height: 450px;
+  margin: 20px auto;
+  cursor: pointer;
+
+  img {
+    height: 50%;
+  }
+  .text-card {
+    height: 35%;
+  }
+  .add-btn {
+    border: none;
+    background-color: #fff;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    img {
+      margin: 0 75%;
+    }
+  }
+  .truncate {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

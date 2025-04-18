@@ -1,3 +1,5 @@
+import { showDetails } from "../js/details.js";
+
 /* ============= Carousel ============= */
 const next_btn = document.querySelector(".carousel-control-next");
 const prev_btn = document.querySelector(".carousel-control-prev");
@@ -29,7 +31,7 @@ prev_btn.addEventListener("click", () => updateItem("prev"));
 /* ============= Products ============= */
 
 async function getProducts() {
-    products = await fetch("https://fakestoreapi.com/products")
+    let products = await fetch("https://fakestoreapi.com/products")
     if (!products)
         return `No products Found!`;
     products = await ((products.json()))
@@ -49,31 +51,28 @@ async function displayProducts(filterdProducts) {
         let product_section = document.createElement("div")
         product_section.innerHTML = `
             <div class="col">
-                <div class="card">
-                <img src="${prod.image}" class="card-img-top" alt="...">
-                <div class="card-body">
-                        <h5 class="card-title">${prod.title}</h5>
+                <div class="card ">
+                    <img src="${prod.image}"  class="card-img-top" alt="">
+                    <div class="card-body">
+                        <div class="text-card">
+                            <h5 class="truncate card-title">${prod.title}</h5>
+                            <span>rating: ${prod.rating.rate}</span><br>
+                            <span>views: ${prod.rating.count}</span>
                         </div>
+                        <button class="add-btn"> <img src="../images/add.jpeg" class="w-25"> </button>
+                    </div>
                 </div>
-                </div>
-
-                `
+            </div>
+        `
         products_section.append(product_section)
     })
 }
-
-// displayProducts()
-
-/***
- * 
- * click checkbox
- * 
- */
 
 
 let listGp = document.querySelectorAll(".list-group input[type='checkbox']");
 listGp.forEach((input) => {
     input.addEventListener("change", handleCheckBoxChange)
+
 
 })
 
@@ -90,7 +89,7 @@ async function filterProducts(categories) {
     let allProducts = await getProducts();
 
     let filterdProducts = allProducts.filter((prod) => {
-        // console.log("index of :", categories.indexOf(prod.category))
+
         return (categories.indexOf(prod.category) !== -1)
 
     })
@@ -99,5 +98,38 @@ async function filterProducts(categories) {
     return filterdProducts;
 }
 
+async function intialdisplay() {
+    let proucts = await getProducts()
+    displayProducts(proucts)
+}
+intialdisplay()
 
+document.addEventListener("DOMContentLoaded", () => {
+    const products_section = document.querySelector(".products-section");
 
+    products_section.addEventListener("click", (e) => {
+        const clickedCard = e.target.closest(".card");
+
+        if (clickedCard) {
+            console.log("clicked card:", clickedCard);
+            showDetails(clickedCard)
+
+        }
+    });
+});
+
+/**
+ *  
+ * {
+    "id": 1,
+    "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
+    "price": 109.95,
+    "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
+    "category": "men's clothing",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+    "rating": {
+      "rate": 3.9,
+      "count": 120
+    }
+  },
+ */
