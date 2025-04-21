@@ -63,13 +63,14 @@ async function displayProducts(filterdProducts) {
                 </div>
             </div>
         `
-        products_section.append(product_section)
 
 
-        let add_btn = document.getElementsByClassName("add-btn")[0]
-        add_btn.addEventListener("click", () => {
+        product_section.querySelector(".add-btn").addEventListener("click", () => {
+            e.stopPropagation();
             addToCartById(prod.id)
         })
+        products_section.append(product_section);
+
     })
 }
 let listGp = document.querySelectorAll(".list-group input[type='checkbox']");

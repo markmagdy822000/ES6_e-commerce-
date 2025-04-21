@@ -16,8 +16,8 @@ function storeInLocalStorgae(key, value) {
 }
 
 function getFromLocalStorage(key) {
-
-    return JSON.parse(localStorage.getItem(key))
+    const item = localStorage.getItem(key);
+    return item ? JSON.parse(item) : null;
 }
 
 function getProductById(prodId) {
@@ -29,14 +29,11 @@ function getProductById(prodId) {
 }
 
 function addToCartById(productId) {
-    let product = getProductById(productId)
-    if (getFromLocalStorage("cartProducts")) {
-        let cartProducts = JSON.parse(getFromLocalStorage("cartProducts"))
-        cartProducts.push(product)
-        storeInLocalStorgae("cartProducts", JSON.stringify(cartProducts))
-
-    }
-    console.log(JSON.parse(getFromLocalStorage("cartProducts")))
+    let product = getProductById(productId)[0]
+    let cartProducts = getFromLocalStorage("cartProducts") || []
+    cartProducts.push(product)
+    storeInLocalStorgae("cartProducts", cartProducts)
+    console.log(getFromLocalStorage("cartProducts"))
 
 }
 // addToCartById()
