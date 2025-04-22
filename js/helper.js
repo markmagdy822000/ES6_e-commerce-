@@ -1,9 +1,13 @@
 
 export async function getProducts() {
-    let products = await fetch("https://fakestoreapi.com/products")
+    // let products = await fetch("https://fakestoreapi.com/products")
+    let products = await fetch("https://dummyjson.com/products")
+
     if (!products)
         return `No products Found!`;
     products = await ((products.json()))
+    products = products.products
+    console.log(products)
     products.forEach(product => {
         product.number_in_cart = 0
     });

@@ -2,10 +2,6 @@
 import { build_navbar, goToCart, applyNavbarFunc } from "./build_components.js";
 import { addToCartById, getProducts } from "../js/helper.js";
 
-// =========================build_navbar==============
-
-// build_navbar()
-
 /* ============= Carousel ============= */
 const next_btn = document.querySelector(".carousel-control-next");
 const prev_btn = document.querySelector(".carousel-control-prev");
@@ -35,8 +31,6 @@ next_btn.addEventListener("click", () => updateItem("next"));
 prev_btn.addEventListener("click", () => updateItem("prev"));
 
 
-
-
 // ================= Cards ===============
 
 async function displayProducts(filterdProducts) {
@@ -50,7 +44,7 @@ async function displayProducts(filterdProducts) {
         product_section.innerHTML = `
             <div class="col">
                 <div class="card" id="${prod.id}">
-                    <img src="${prod.image}"  class="card-img-top" alt="">
+                    <img src="${prod.images[0]}"  class="card-img-top" alt="">
                     <div class="card-body">
                         <div class="text-card">
                             <h5 class="truncate card-title">${prod.title}</h5>
@@ -91,6 +85,7 @@ function handleCheckBoxChange() {
 
 async function filterProducts(categories) {
     let allProducts = await getProducts();
+    console.log("from filter: ", products)
 
     let filterdProducts = allProducts.filter((prod) => {
         return (categories.indexOf(prod.category) !== -1)
