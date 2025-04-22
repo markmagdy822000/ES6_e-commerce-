@@ -1,22 +1,20 @@
 import { addToCartById, getCartProducts, removeFromCartById } from "../js/helper.js"
 let cart_container = document.querySelector('.cart-container');
 
+
 function buildCartProducts() {
-
-
+    cart_container.innerHTML = ``
     let cart_products = getCartProducts()
+
     cart_products.forEach(cart_product => {
         let cart_product_section = document.createElement("div")
-        // console.log(cart_product_section)
-        // console.log(cart_products)
-
         console.log(cart_product.title)
         cart_product_section.innerHTML = `
      <div id="${cart_product.id}" class="d-flex mt-5 ms-5  align-items-center  w-50 cart-product">
 
             <div class=" col-6 d-flex align-items-center ">
                 <span class="ms-4 name  ">${cart_product.title} </span>
-                <span class="m-4 price ">${cart_product.price * cart_product.number_in_cart} </span>
+                <span class="m-4 price ">${cart_product.price * cart_product.number_in_cart.toFixed(2)} </span>
                 
             </div>
             <div class="col-6 d-flex flex-row-reverse  align-items-center ">
@@ -30,12 +28,10 @@ function buildCartProducts() {
             </div>
         </div>
     `
-
-
         cart_container.append(cart_product_section);
     });
+    addingFunctionality()
 }
-buildCartProducts()
 function addPlusFunctioanlity() {
     let plus_btns = document.querySelectorAll(".plus-icon")
     plus_btns.forEach(plus_btn => {
@@ -46,11 +42,10 @@ function addPlusFunctioanlity() {
             console.log(e.target.closest(".cart-product"))
             console.log(e.target.closest(".cart-product").id)
             addToCartById(e.target.closest(".cart-product").id)
-            // buildCartProducts()
+            buildCartProducts()
         })
     });
 }
-addPlusFunctioanlity()
 
 function addMinusFunctioanlity() {
     let minus_btns = document.querySelectorAll(".minus-icon")
@@ -64,8 +59,13 @@ function addMinusFunctioanlity() {
             console.log(e.target.closest(".cart-product"))
             console.log(e.target.closest(".cart-product").id)
             removeFromCartById(e.target.closest(".cart-product").id)
-
+            buildCartProducts()
         })
     });
 }
-addMinusFunctioanlity()
+function addingFunctionality() {
+    addPlusFunctioanlity()
+    addMinusFunctioanlity()
+}
+
+buildCartProducts()
