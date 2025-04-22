@@ -65,7 +65,7 @@ async function displayProducts(filterdProducts) {
         `
 
 
-        product_section.querySelector(".add-btn").addEventListener("click", () => {
+        product_section.querySelector(".add-btn").addEventListener("click", (e) => {
             e.stopPropagation();
             addToCartById(prod.id)
         })
@@ -114,11 +114,29 @@ document.addEventListener("DOMContentLoaded", () => {
     products_section.addEventListener("click", (e) => {
         const clickedCard = e.target.closest(".card");
 
+
+
+
         if (clickedCard) {
             localStorage.setItem("prodId", clickedCard.id);
             location.assign("../html/details.html");
         }
+
+
     });
+
+
+    // const add_btns = document.querySelectorAll(".add-btn");
+    // add_btns.forEach((add_btn) => {
+    //     add_btn.addEventListener("click", (e) => {
+    //         e.stopPropagation();
+    //         const card = add_btn.closest(".card");
+    //         const prodId = card.id;
+    //         addToCartById(prodId);
+    //         console.log("Product added to cart:", add_btn);
+    //         console.log("prodId:", prodId);
+    //     })
+    // })
 });
 
 intialdisplay()
