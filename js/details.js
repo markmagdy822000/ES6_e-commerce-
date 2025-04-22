@@ -1,5 +1,5 @@
 
-import { build_navbar } from "../js/build_components.js";
+import { build_navbar, goToCart } from "../js/build_components.js";
 import { getProducts, getProductById, addToCartById } from "../js/helper.js"
 document.addEventListener("DOMContentLoaded", (event) => {
     // ========= build navbar =====
@@ -55,6 +55,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
             addToCartById(myProd.id)
         })
 
-
     }
+    goToCart()
 });

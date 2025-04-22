@@ -1,10 +1,10 @@
 
-import { build_navbar } from "./build_components.js";
+import { build_navbar, goToCart } from "./build_components.js";
 import { addToCartById, getProducts } from "../js/helper.js";
 
 // =========================build_navbar==============
 
-// build_navbar()
+build_navbar()
 
 /* ============= Carousel ============= */
 const next_btn = document.querySelector(".carousel-control-next");
@@ -139,3 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 intialdisplay()
+
+// let cart_icon = document.querySelector(".cart-icon")
+// console.log("cart_icon:", cart_icon)
+goToCart()
