@@ -37,7 +37,6 @@ prev_btn.addEventListener("click", () => updateItem("prev"));
 /* ============= Products ============= */
 
 
-
 // ================= Cards ===============
 
 async function displayProducts(filterdProducts) {

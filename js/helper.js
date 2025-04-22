@@ -1,23 +1,30 @@
-
 export async function getProducts() {
     let products = await fetch("https://fakestoreapi.com/products")
     if (!products)
         return `No products Found!`;
     products = await ((products.json()))
-    console.log(products)
-
-    storeInLocalStorgae("allProducts", products)
-
+    storeInLocalStorage("allProducts", products)
     return products
 }
 
-function storeInLocalStorgae(key, value) {
+function storeInLocalStorage(key, value) {
     localStorage.setItem(key, JSON.stringify(value))
 }
 
 function getFromLocalStorage(key) {
     const item = localStorage.getItem(key);
     return item ? JSON.parse(item) : null;
+}
+
+
+
+function addToCartById(productId) {
+    let product = getProductById(productId)[0]
+    let cartProducts = getFromLocalStorage("cartProducts") || []
+    cartProducts.push(product)
+    storeInLocalStorage("cartProducts", cartProducts)
+    console.log(getFromLocalStorage("cartProducts"))
+
 }
 
 function getProductById(prodId) {
@@ -28,13 +35,11 @@ function getProductById(prodId) {
     return myProduct
 }
 
-function addToCartById(productId) {
-    let product = getProductById(productId)[0]
-    let cartProducts = getFromLocalStorage("cartProducts") || []
-    cartProducts.push(product)
-    storeInLocalStorgae("cartProducts", cartProducts)
-    console.log(getFromLocalStorage("cartProducts"))
+function getCartProducts() {
+    let cartProducts = getFromLocalStorage("cartProducts")
+    if (!cartProducts) return []
+    return cartProducts
 
 }
 // addToCartById()
-export { storeInLocalStorgae, addToCartById, getProductById, getFromLocalStorage }
+export { storeInLocalStorage, getCartProducts, addToCartById, getProductById, getFromLocalStorage }
