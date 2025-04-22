@@ -1,4 +1,4 @@
-import { addToCartById, getCartProducts } from "../js/helper.js"
+import { addToCartById, getCartProducts, removeFromCartById } from "../js/helper.js"
 let cart_container = document.querySelector('.cart-container');
 
 function buildCartProducts() {
@@ -31,8 +31,12 @@ function buildCartProducts() {
         </div>
     `
 
+
         cart_container.append(cart_product_section);
     });
+}
+buildCartProducts()
+function addPlusFunctioanlity() {
     let plus_btns = document.querySelectorAll(".plus-icon")
     plus_btns.forEach(plus_btn => {
 
@@ -42,8 +46,26 @@ function buildCartProducts() {
             console.log(e.target.closest(".cart-product"))
             console.log(e.target.closest(".cart-product").id)
             addToCartById(e.target.closest(".cart-product").id)
+            // buildCartProducts()
         })
     });
-
 }
-buildCartProducts()
+addPlusFunctioanlity()
+
+function addMinusFunctioanlity() {
+    let minus_btns = document.querySelectorAll(".minus-icon")
+
+    minus_btns.forEach(plus_btn => {
+
+        // console.log("plus_btn:", plus_btn)
+        plus_btn.addEventListener("click", (e) => {
+
+            console.log(e.target)
+            console.log(e.target.closest(".cart-product"))
+            console.log(e.target.closest(".cart-product").id)
+            removeFromCartById(e.target.closest(".cart-product").id)
+
+        })
+    });
+}
+addMinusFunctioanlity()

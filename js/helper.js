@@ -22,17 +22,20 @@ function getFromLocalStorage(key) {
 
 
 function addToCartById(productId) {
-    let product = getProductById(productId)[0]
+    let addedProduct = getProductById(productId)[0]
     let cartProducts = getFromLocalStorage("cartProducts") || []
     let exists = false;
-    cartProducts.map(prod => {
-        if (prod.id === product.id) {
-            prod.number_in_cart += 1
+    cartProducts.map(cart_prod => {
+        if (cart_prod.id === addedProduct.id) {
+            cart_prod.number_in_cart += 1
             exists = true
         }
     })
 
-    exists ? "" : cartProducts.push(product);
+    if (!exists) {
+        addedProduct.number_in_cart += 1;
+        cartProducts.push(addedProduct);
+    };
 
     storeInLocalStorage("cartProducts", cartProducts)
     console.log(getFromLocalStorage("cartProducts"))
@@ -52,5 +55,31 @@ function getCartProducts() {
     return cartProducts
 
 }
+
+function removeFromCartById(prodId) {
+    console.log("from remove funciton")
+    let cartProducts = getFromLocalStorage("cartProducts")
+
+    let index = cartProducts.findIndex((cart_prod) => {
+
+        return cart_prod.id === Number(prodId);
+    })
+    console.log("index: ", index)
+    if (index === -1) {
+        console.log(`product not found`)
+        return false;
+    }
+    if (cartProducts[index].number_in_cart === 1) {
+        cartProducts.splice(index, 1);
+        storeInLocalStorage("cartProducts", cartProducts)
+        return true;
+    }
+    cartProducts[index].number_in_cart -= 1;
+    storeInLocalStorage("cartProducts", cartProducts)
+    return true;
+
+
+
+}
 // addToCartById()
-export { storeInLocalStorage, getCartProducts, addToCartById, getProductById, getFromLocalStorage }
+export { storeInLocalStorage, getCartProducts, removeFromCartById, addToCartById, getProductById, getFromLocalStorage }
