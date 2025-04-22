@@ -9,6 +9,7 @@ function build_totalCost() {
     totalCost.innerHTML = `<p>Total Cost: <span>${getTotalCost()}</span></p>`;
     cart_container.append(totalCost)
 }
+
 function build_buyNow() {
     let buyNow = document.createElement("section")
     buyNow.setAttribute("class", "buyNow")
@@ -19,20 +20,24 @@ function build_buyNow() {
     cart_container.append(buyNow)
 }
 
-
 function buildCartProducts() {
     cart_container.innerHTML = ``
     let cart_products = getCartProducts()
 
     cart_products.forEach(cart_product => {
+        console.log(cart_product)
         let cart_product_section = document.createElement("div")
         console.log(cart_product.title)
+        console.log("cart_product.image;: ", cart_product.images[0])
+
         cart_product_section.innerHTML = `
      <div id="${cart_product.id}" class="d-flex mt-5 ms-5  align-items-center  w-50 cart-product">
 
             <div class=" col-6 d-flex align-items-center ">
+                
+            <img class="ms-4 img w-25 mb-1" src="${cart_product.images[0]} " >
                 <span class="ms-4 name  ">${cart_product.title} </span>
-                <span class="m-4 price ">${cart_product.price * cart_product.number_in_cart.toFixed(2)} </span>
+                <span class="m-4 price">${cart_product.price * cart_product.number_in_cart.toFixed(2)} </span>
                 
             </div>
             <div class="col-6 d-flex flex-row-reverse  align-items-center ">
@@ -89,6 +94,5 @@ function addingFunctionality() {
     addPlusFunctioanlity()
     addMinusFunctioanlity()
 }
-
 
 buildCartProducts()

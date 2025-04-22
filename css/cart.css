@@ -8,6 +8,9 @@
   .cart-product {
     border: 1px solid violet;
     height: 100px;
+    img {
+      width: 50px;
+    }
   }
 }
 

@@ -1,6 +1,6 @@
 
 import { build_navbar, goToCart, applyNavbarFunc } from "./build_components.js";
-import { addToCartById, getProducts } from "../js/helper.js";
+import { addToCartById, getFromLocalStorage, getProducts } from "../js/helper.js";
 
 /* ============= Carousel ============= */
 const next_btn = document.querySelector(".carousel-control-next");
@@ -68,6 +68,25 @@ async function displayProducts(filterdProducts) {
 }
 
 // ================ Filter ===========
+function buildFilter() {
+    let allProducts = getFromLocalStorage("allProducts")
+    let allCategories = [];
+    allProducts.forEach(prod => {
+        allCategories.push(prod.category)
+    })
+    allCategories = [...new Set(allCategories)]
+    let list_group = document.querySelector(".list-group")
+    allCategories.forEach(cat => {
+        let item = document.createElement("div")
+        item.innerHTML = `<li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" checked value="${cat}" id="${cat}">
+            <label class="form-check-label" for="${cat}">${cat}</label>
+        </li>`
+        list_group.append(item)
+    })
+}
+buildFilter()
+
 let listGp = document.querySelectorAll(".list-group input[type='checkbox']");
 
 listGp.forEach((input) => {
@@ -85,7 +104,7 @@ function handleCheckBoxChange() {
 
 async function filterProducts(categories) {
     let allProducts = await getProducts();
-    console.log("from filter: ", products)
+    console.log("from filter: ", categories)
 
     let filterdProducts = allProducts.filter((prod) => {
         return (categories.indexOf(prod.category) !== -1)
