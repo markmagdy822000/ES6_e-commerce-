@@ -1,6 +1,23 @@
-import { addToCartById, getCartProducts, removeFromCartById } from "../js/helper.js"
-import { build_navbar, applyNavbarFunc } from "./build_components.js";
+import { addToCartById, getCartProducts, getTotalCost, removeFromCartById } from "../js/helper.js"
+import { applyNavbarFunc } from "./build_components.js";
+
 let cart_container = document.querySelector('.cart-container');
+
+function build_totalCost() {
+    let totalCost = document.createElement("section")
+    totalCost.setAttribute("class", "totalCost")
+    totalCost.innerHTML = `<p>Total Cost: <span>${getTotalCost()}</span></p>`;
+    cart_container.append(totalCost)
+}
+function build_buyNow() {
+    let buyNow = document.createElement("section")
+    buyNow.setAttribute("class", "buyNow")
+    buyNow.innerHTML = `<button  class=" btn btn-success w-100 h-100 ">Buy Now !</button>`
+    buyNow.addEventListener("click", () => {
+        location.assign("../html/orderShipped.html")
+    })
+    cart_container.append(buyNow)
+}
 
 
 function buildCartProducts() {
@@ -31,7 +48,9 @@ function buildCartProducts() {
     `
         cart_container.append(cart_product_section);
     });
+    build_totalCost()
     addingFunctionality()
+    build_buyNow()
 }
 
 function addPlusFunctioanlity() {
@@ -71,5 +90,5 @@ function addingFunctionality() {
     addMinusFunctioanlity()
 }
 
+
 buildCartProducts()
-applyNavbarFunc()   

@@ -10,3 +10,21 @@
     height: 100px;
   }
 }
+
+.totalCost {
+  font-size: 30px;
+  margin: 50px;
+  margin-left: 50px;
+}
+
+.buyNow {
+  width: 500px;
+  height: 80px;
+
+  margin: 50px;
+  margin-left: 50px;
+  button {
+    font-size: 40px;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  }
+}

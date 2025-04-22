@@ -60,6 +60,16 @@ function getCartProducts() {
 
 }
 
+
+function getTotalCost() {
+    let cartProds = getFromLocalStorage("cartProducts")
+    console.log("from gettotatl cost: ", cartProds)
+    let sum = 0;
+    cartProds.forEach(prod => {
+        sum += prod.number_in_cart * prod.price;
+    })
+    return sum.toFixed(2);
+}
 function removeFromCartById(prodId) {
     console.log("from remove funciton")
     let cartProducts = getFromLocalStorage("cartProducts")
@@ -86,4 +96,4 @@ function removeFromCartById(prodId) {
 
 }
 // addToCartById()
-export { storeInLocalStorage, getCartProducts, removeFromCartById, addToCartById, getProductById, getFromLocalStorage }
+export { storeInLocalStorage, getTotalCost, getCartProducts, removeFromCartById, addToCartById, getProductById, getFromLocalStorage }

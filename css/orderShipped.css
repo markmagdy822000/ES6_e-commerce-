@@ -1,0 +1,17 @@
+html {
+  height: 100vh;
+}
+body {
+  /* border: 1px solid black; */
+  width: 86%;
+  margin: 0 auto;
+  height: 50vh;
+  .container {
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 50px;
+  }
+}
