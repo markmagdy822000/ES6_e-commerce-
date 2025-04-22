@@ -1,10 +1,10 @@
 
-import { build_navbar, goToCart } from "./build_components.js";
+import { build_navbar, goToCart, applyNavbarFunc } from "./build_components.js";
 import { addToCartById, getProducts } from "../js/helper.js";
 
 // =========================build_navbar==============
 
-build_navbar()
+// build_navbar()
 
 /* ============= Carousel ============= */
 const next_btn = document.querySelector(".carousel-control-next");
@@ -34,7 +34,7 @@ function updateItem(direction) {
 next_btn.addEventListener("click", () => updateItem("next"));
 prev_btn.addEventListener("click", () => updateItem("prev"));
 
-/* ============= Products ============= */
+
 
 
 // ================= Cards ===============
@@ -72,11 +72,12 @@ async function displayProducts(filterdProducts) {
 
     })
 }
+
+// ================ Filter ===========
 let listGp = document.querySelectorAll(".list-group input[type='checkbox']");
+
 listGp.forEach((input) => {
     input.addEventListener("change", handleCheckBoxChange)
-
-
 })
 
 function handleCheckBoxChange() {
@@ -92,9 +93,7 @@ async function filterProducts(categories) {
     let allProducts = await getProducts();
 
     let filterdProducts = allProducts.filter((prod) => {
-
         return (categories.indexOf(prod.category) !== -1)
-
     })
     console.log("filterdProducts: ", filterdProducts)
     displayProducts(filterdProducts)
@@ -106,40 +105,18 @@ async function intialdisplay() {
     displayProducts(proucts)
 }
 
-
 document.addEventListener("DOMContentLoaded", () => {
     const products_section = document.querySelector(".products-section");
 
     products_section.addEventListener("click", (e) => {
         const clickedCard = e.target.closest(".card");
-
-
-
-
         if (clickedCard) {
             localStorage.setItem("prodId", clickedCard.id);
             location.assign("../html/details.html");
         }
-
-
     });
 
-
-    // const add_btns = document.querySelectorAll(".add-btn");
-    // add_btns.forEach((add_btn) => {
-    //     add_btn.addEventListener("click", (e) => {
-    //         e.stopPropagation();
-    //         const card = add_btn.closest(".card");
-    //         const prodId = card.id;
-    //         addToCartById(prodId);
-    //         console.log("Product added to cart:", add_btn);
-    //         console.log("prodId:", prodId);
-    //     })
-    // })
 });
 
 intialdisplay()
-
-// let cart_icon = document.querySelector(".cart-icon")
-// console.log("cart_icon:", cart_icon)
-goToCart()
+applyNavbarFunc()

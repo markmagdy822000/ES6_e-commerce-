@@ -1,7 +1,10 @@
+- Change API
 - LISTEN TO PROJECT RECORD AGAIN
-- 
+- check validations by deepseek
 - Create footer
 - Logout
 - Make deepseek create better design
 - Animations, css hovering
-- MAKE + ICON   IN hoem page => addToCart()
+- make user name appear at nav bar
+- if product already in cart (increment count)
+- Take care all users have same cart !!!

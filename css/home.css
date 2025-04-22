@@ -57,7 +57,18 @@
 
 /* ********* Products ************ */
 .list-group {
-  width: 80%;
+  width: 90%;
+  margin: 25px auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  .list-group-item {
+    border: none;
+    font-size: 20px;
+    font-weight: 700;
+    width: 20%;
+  }
+
   img {
     width: 10%;
   }

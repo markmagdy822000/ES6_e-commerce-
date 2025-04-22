@@ -1,4 +1,5 @@
 import { isUserExists } from "./auth.js"
+import { storeInLocalStorage } from "../js/helper.js"
 
 let login_form = document.getElementById("login-form")
 console.log(login_form)
@@ -10,9 +11,11 @@ let errrLogin = login_form.getElementsByClassName("error-login")[0]
 
 login_form.addEventListener("submit", (e) => {
     e.preventDefault()
-    console.log("inside login form")
-    if (isUserExists(emailIn.value, passIn.value))
+    if (isUserExists(emailIn.value, passIn.value)) {
         location.assign("./home.html")
+        // storeInLocalStorage("currentUser", { name: nameIn.value, email: emailIn.value, password: passIn.value })
+        storeInLocalStorage("name", nameIn.value)
+    }
     else
         errrLogin.style.display = 'block'
 })

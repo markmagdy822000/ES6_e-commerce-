@@ -1,3 +1,4 @@
+
 export async function getProducts() {
     let products = await fetch("https://fakestoreapi.com/products")
     if (!products)
@@ -11,6 +12,7 @@ export async function getProducts() {
 }
 
 function storeInLocalStorage(key, value) {
+    console.log("storinnng", key, value)
     localStorage.setItem(key, JSON.stringify(value))
 }
 
@@ -18,8 +20,6 @@ function getFromLocalStorage(key) {
     const item = localStorage.getItem(key);
     return item ? JSON.parse(item) : null;
 }
-
-
 
 function addToCartById(productId) {
     let addedProduct = getProductById(productId)[0]

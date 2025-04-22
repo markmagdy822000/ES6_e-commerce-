@@ -1,4 +1,5 @@
 import { addToCartById, getCartProducts, removeFromCartById } from "../js/helper.js"
+import { build_navbar, applyNavbarFunc } from "./build_components.js";
 let cart_container = document.querySelector('.cart-container');
 
 
@@ -32,6 +33,7 @@ function buildCartProducts() {
     });
     addingFunctionality()
 }
+
 function addPlusFunctioanlity() {
     let plus_btns = document.querySelectorAll(".plus-icon")
     plus_btns.forEach(plus_btn => {
@@ -63,9 +65,11 @@ function addMinusFunctioanlity() {
         })
     });
 }
+
 function addingFunctionality() {
     addPlusFunctioanlity()
     addMinusFunctioanlity()
 }
 
 buildCartProducts()
+applyNavbarFunc()   

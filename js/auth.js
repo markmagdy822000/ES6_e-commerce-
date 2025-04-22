@@ -2,6 +2,13 @@ function getUsers() {
     let data = localStorage.getItem("users")
     return data ? JSON.parse(data) : []
 }
+function getUserByEmail(email) {
+    let myUser = getUsers.find(user => {
+        user.email === email
+    })
+    console.log("myUser: ", myUser)
+    return myUser ? myUser : {}
+}
 
 function addUserAccount(nameIn, emailIn, passIn) {
 
@@ -31,4 +38,13 @@ function isUserExists(email, password) {
     })
     return userExists !== undefined
 }
-export { getUsers, addUserAccount, isUserExists }
+
+function logout() {
+    console.log("from auth")
+    location.replace("../html/login.html")
+}
+function login() {
+
+}
+
+export { getUsers, getUserByEmail, logout, addUserAccount, isUserExists }
