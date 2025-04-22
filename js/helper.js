@@ -3,6 +3,9 @@ export async function getProducts() {
     if (!products)
         return `No products Found!`;
     products = await ((products.json()))
+    products.forEach(product => {
+        product.number_in_cart = 0
+    });
     storeInLocalStorage("allProducts", products)
     return products
 }
@@ -21,10 +24,18 @@ function getFromLocalStorage(key) {
 function addToCartById(productId) {
     let product = getProductById(productId)[0]
     let cartProducts = getFromLocalStorage("cartProducts") || []
-    cartProducts.push(product)
+    let exists = false;
+    cartProducts.map(prod => {
+        if (prod.id === product.id) {
+            prod.number_in_cart += 1
+            exists = true
+        }
+    })
+
+    exists ? "" : cartProducts.push(product);
+
     storeInLocalStorage("cartProducts", cartProducts)
     console.log(getFromLocalStorage("cartProducts"))
-
 }
 
 function getProductById(prodId) {
