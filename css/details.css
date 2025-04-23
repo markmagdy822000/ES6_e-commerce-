@@ -1,14 +1,15 @@
 #mainImg {
   /* border: 1px solid violet; */
+  /* margin-top: 50px; */
   height: 50vh;
   img {
     height: 100%;
     object-fit: contain;
   }
 }
-
 #details-section {
   /* border: 1px solid violet; */
+  margin-top: 50px;
   .card {
     border: none;
   }

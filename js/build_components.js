@@ -1,8 +1,9 @@
 import { logout } from "../js/auth.js"
 import { getFromLocalStorage } from "../js/helper.js";
+
 function build_navbar() {
     let navbar = document.createElement("nav")
-    let userName = localStorage.getItem("name");
+    let loggedUser = getFromLocalStorage("loggedUser");
 
     navbar.innerHTML = ` <header class="">
         <ul class="nav nav-pills nav-fill">
@@ -23,7 +24,7 @@ function build_navbar() {
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link username" href="#">${userName} </a>
+                <a class="nav-link username" href="#">${loggedUser.name} </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link logout" href="#">Logout</a>
@@ -35,11 +36,48 @@ function build_navbar() {
 
 function buid_footer() {
     let footer = document.createElement("section")
-    footer.innerHTML = ` <footer class="minimal-footer">
-    <p>&copy; 2023 YourStore</p>
+    footer.innerHTML =
+        //     `<footer class="minimal-footer">
+        //     <p>&copy; 2023 YourStore</p>
+        // </footer>`
+        `<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>About Us</h3>
+      <p>We provide quality products with fast delivery and excellent customer service.</p>
+    </div>
+    
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="#">Cart</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-section">
+      <h3>Contact Info</h3>
+      <p><i class="fas fa-map-marker-alt"></i> 123 Street, City</p>
+      <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+      <p><i class="fas fa-envelope"></i> info@example.com</p>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p>&copy; 2023 Your Company. All rights reserved.</p>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+    </div>
+  </div>
 </footer>`
     document.body.append(footer)
 }
+
 function goToCart() {
     let cart_icon = document.querySelector(".cart-icon")
     console.log("cart_icon:", cart_icon)
@@ -48,8 +86,6 @@ function goToCart() {
     })
 }
 
-
-
 function goToHome() {
     let home_icon = document.querySelector(".home-page")
 
@@ -57,6 +93,7 @@ function goToHome() {
         location.assign("../html/home.html")
     })
 }
+
 function applyLogout() {
     console.log("from applyloggin out")
     let logout_icon = document.querySelector(".logout")
@@ -73,4 +110,5 @@ function applyNavbarFunc() {
     buid_footer()
 
 }
+
 export { build_navbar, applyNavbarFunc, applyLogout, goToCart, goToHome }

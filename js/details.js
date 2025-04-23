@@ -1,11 +1,9 @@
 
-import { build_navbar, goToCart, applyNavbarFunc } from "../js/build_components.js";
-import { getProducts, getProductById, addToCartById } from "../js/helper.js"
+import { applyNavbarFunc } from "../js/build_components.js";
+import { getProductById, addToCartById } from "../js/helper.js"
 document.addEventListener("DOMContentLoaded", (event) => {
+
     // ========= build navbar =====
-
-    // =========  =====
-
     build_details()
 
     async function build_details() {
@@ -20,7 +18,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         // ===== Main Image========
         let img_container = document.getElementById("mainImg")
         let img = img_container.getElementsByTagName("img")[0]
-        img.setAttribute("src", myProd.image)
+        img.setAttribute("src", myProd.images[0])
 
         //  ========= Header ==============
         let header = document.getElementsByClassName("card-title")[0]
@@ -49,7 +47,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
         // ============add to cart ==========
         let addToCart = document.getElementsByClassName("addToCart")[0]
-        console.log(myProd.id)
         addToCart.addEventListener("click", (e) => {
             addToCartById(myProd.id)
         })

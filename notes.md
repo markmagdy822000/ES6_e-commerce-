@@ -1,10 +1,5 @@
-- filter is not working !!
+- Create footer
 - LISTEN TO PROJECT RECORD AGAIN
 - check validations by deepseek
-- Create footer
-- Logout
 - Make deepseek create better design
 - Animations, css hovering
-- make user name appear at nav bar
-- if product already in cart (increment count)
-- Take care all users have same cart !!!
