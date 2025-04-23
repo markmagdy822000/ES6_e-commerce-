@@ -48,7 +48,7 @@ function buid_footer() {
     </div>
     
     <div class="footer-section">
-      <h3>Quick Links</h3>
+      <h3>Links</h3>
       <ul>
         <li><a href="#">Home</a></li>
         <li><a href="#">Products</a></li>
@@ -59,14 +59,14 @@ function buid_footer() {
     
     <div class="footer-section">
       <h3>Contact Info</h3>
-      <p><i class="fas fa-map-marker-alt"></i> 123 Street, City</p>
-      <p><i class="fas fa-phone"></i> (123) 456-7890</p>
-      <p><i class="fas fa-envelope"></i> info@example.com</p>
+      <p>1550 EL Zaher Street, Cairo</p>
+      <p>01234567890</p>
+      <p>mark@gmail.com</p>
     </div>
   </div>
   
-  <div class="footer-bottom">
-    <p>&copy; 2023 Your Company. All rights reserved.</p>
+   <div class="footer-bottom">
+    <p>&copy; 2023 MKGrouP. All rights reserved.</p>
     <div class="social-icons">
       <a href="#"><i class="fab fa-facebook"></i></a>
       <a href="#"><i class="fab fa-twitter"></i></a>

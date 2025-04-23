@@ -8,6 +8,13 @@
   }
 }
 
+.slider {
+  width: 90%;
+  margin: 5% auto;
+  .carousel-item img {
+    object-fit: contain;
+  }
+}
 /* move right */
 
 @keyframes right_center {
