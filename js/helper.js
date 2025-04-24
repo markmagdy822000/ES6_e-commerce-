@@ -60,6 +60,16 @@ function getCartProducts() {
 
 }
 
+function filterPrice(from, to) {
+    from = Number(from)
+    to = Number(to)
+    let products = getFromLocalStorage("allProducts")
+    let filteredProducts = products.filter(prod => {
+        return prod.price >= from && prod.price <= to;
+    })
+    // console.log(filteredProducts)
+    return filteredProducts;
+}
 
 function getTotalCost() {
     let cartProds = getFromLocalStorage("cartProducts")
@@ -101,4 +111,4 @@ function emptyCart() {
 }
 
 // addToCartById()
-export { storeInLocalStorage, emptyCart, getTotalCost, getCartProducts, removeFromCartById, addToCartById, getProductById, getFromLocalStorage }
+export { storeInLocalStorage, filterPrice, emptyCart, getTotalCost, getCartProducts, removeFromCartById, addToCartById, getProductById, getFromLocalStorage }

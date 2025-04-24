@@ -1,6 +1,6 @@
 
 import { build_navbar, goToCart, applyNavbarFunc } from "./build_components.js";
-import { addToCartById, getFromLocalStorage, getProducts } from "../js/helper.js";
+import { addToCartById, getFromLocalStorage, getProducts, filterPrice } from "../js/helper.js";
 
 /* ============= Carousel ============= */
 const next_btn = document.querySelector(".carousel-control-next");
@@ -82,10 +82,24 @@ function buildFilter() {
         item.innerHTML = `<li class="list-group-item">
             <input class="form-check-input me-1" type="checkbox" checked value="${cat}" id="${cat}">
             <label class="form-check-label" for="${cat}">${cat}</label>
-        </li>`
+            </li>`
         list_group.append(item)
-    })
+    });
+
+    let priceDiv = document.createElement("div")
+    priceDiv.innerHTML = `<label class="input"  for= "fromPriceFilter"> From</label > <input id="fromPriceFilter" type=number /> 
+    <label class="input" for= "toPriceFilter"> To </label > <input id="toPriceFilter" type=number />`
+    list_group.append(priceDiv)
+
+    let fromIn = document.getElementById("fromPriceFilter")
+    let toIn = document.getElementById("toPriceFilter")
+    fromIn.addEventListener("change", () => { filterPrice(fromIn.value, toIn.value) })
+    toIn.addEventListener("change", () => { filterPrice(fromIn.value, toIn.value) })
+
+    // 
 }
+
+
 buildFilter()
 
 let listGp = document.querySelectorAll(".list-group input[type='checkbox']");
@@ -105,11 +119,10 @@ function handleCheckBoxChange() {
 
 async function filterProducts(categories) {
     let allProducts = await getProducts();
-    console.log("from filter: ", categories)
-
     let filterdProducts = allProducts.filter((prod) => {
         return (categories.indexOf(prod.category) !== -1)
     })
+
     console.log("filterdProducts: ", filterdProducts)
     displayProducts(filterdProducts)
     return filterdProducts;
