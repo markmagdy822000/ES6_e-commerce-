@@ -64,30 +64,31 @@ async function categoryFilter(products, categories) {
     let filterdProducts = products.filter((prod) => {
         return (categories.indexOf(prod.category) !== -1)
     })
-
-    console.log("filterdProducts: ", filterdProducts)
-    displayProducts(filterdProducts)
+    console.log("filterd, ", filterProducts)
+    // displayProducts(filterdProducts)
     return filterdProducts;
 }
 
 async function intialdisplay() {
     let products = getFromLocalStorage("allProducts")
-    displayProducts(products)
+
+}
+function priceFilter(products, from = 0, to = 10000000) {
+    let filterdProducts = products.filter((prod) => {
+        return prod.price >= from && prod.price <= to;
+    })
+    return filterdProducts;
 }
 
-function filterProducts(categories, from, to) {
-    let allProducts = getFromLocalStorage("allProducts");
+async function filterProducts(categories, from, to) {
+    console.log("prices, ->", from, to)
+    let products = getFromLocalStorage("allProducts");
+    from = from || 0;
+    to = to || 10000;
+    products = await categoryFilter(products, categories)
+    products = await priceFilter(products, from, to)
+    displayProducts(await products)
 
-    let filteredProducts = categoryFilter(allProducts, categories)
-
-    // =======filter price=======
-    // from = Number(from)
-    // to = Number(to)
-    // filteredProducts = products.filter(prod => {
-    //     return prod.price >= from && prod.price <= to;
-    // })
-    // // console.log(filteredProducts)
-    // return filteredProducts;
 }
 
 function getTotalCost() {
