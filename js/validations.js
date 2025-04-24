@@ -2,9 +2,10 @@
 // =========== Validation ==========
 function validateName(nameIn, errName) {
 
-    let reg = /^[a-z A-Z]{3,}$/
+    let reg = /^[a-z \- \_ A-Z]{3,}$/
 
-    if (!reg.test(nameIn.value) || nameIn.value.length === 0) {
+    const name = nameIn.value.trim();
+    if (!reg.test(name) || name.length === 0) {
         errName.style.display = "block"
         return false
     } else {
@@ -27,18 +28,19 @@ function validateEmail(emailIn, errEmail) {
 }
 
 function validatePassword(passIn, errPass) {
+    const password = passIn.value.trim();
     let reg = /[\w]/
     let special_reg = /[!@#$%^&*()_-]/
     let reg_capital = /[A-Z]/
     let reg_small = /[a-z]/
     let reg_num = /[0-9]/
     if (
-        !reg.test(passIn.value) ||
-        !special_reg.test(passIn.value) ||
-        !reg_capital.test(passIn.value) ||
-        !reg_small.test(passIn.value) ||
-        !reg_num.test(passIn.value) ||
-        passIn.value.length < 8) {
+        !reg.test(password) ||
+        !special_reg.test(password) ||
+        !reg_capital.test(password) ||
+        !reg_small.test(password) ||
+        !reg_num.test(password) ||
+        password.length < 8) {
 
         errPass.style.display = "block"
         errPass.innerHTML = "please enter valid password, password must contain special charcter, capital characetr, number, small characters & at least 8 characters"
@@ -52,7 +54,9 @@ function validatePassword(passIn, errPass) {
 }
 
 function validateConfirmPassword(passIn, confirmPassIn, errConf_Pass) {
-    if (passIn.value != confirmPassIn.value) {
+    const password = passIn.value.trim();
+    const confirmPassword = confirmPassIn.value.trim();
+    if (password != confirmPassword) {
         errConf_Pass.style.display = "block"
         errConf_Pass.innerText = "Confirm password must be the same as password"
         return false
@@ -64,4 +68,3 @@ function validateConfirmPassword(passIn, confirmPassIn, errConf_Pass) {
 
 export { validateConfirmPassword, validateName, validateEmail, validatePassword }
 
-// khYTE%3das

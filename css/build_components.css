@@ -23,17 +23,6 @@ header {
   }
 }
 
-/* .minimal-footer {
-  text-align: center;
-  padding: 20px;
-  color: #666;
-  font-size: 14px;
-  margin-top: 50px;
-  position: fixed;
-  bottom: 0;
-} */
-
-/* Footer Styles */
 .site-footer {
   background-color: #2c3e50;
   color: #ecf0f1;
@@ -55,55 +44,56 @@ header {
   min-width: 250px;
   margin-bottom: 30px;
   padding: 0 15px;
-}
 
-.footer-section h3 {
-  color: #f39c12;
-  margin-bottom: 20px;
-  font-size: 1.2rem;
-}
+  h3 {
+    color: #f39c12;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+  }
 
-.footer-section p,
-.footer-section li {
-  margin-bottom: 10px;
-  line-height: 1.6;
-}
+  p,
+  li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+  }
 
-.footer-section a {
-  color: #bdc3c7;
-  text-decoration: none;
-  transition: color 0.3s;
-}
+  a {
+    color: #bdc3c7;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
 
-.footer-section a:hover {
-  color: #f39c12;
+  a:hover {
+    color: #f39c12;
+  }
 }
 
 .footer-bottom {
+  position: relative;
   background-color: #1a252f;
   padding: 20px 0;
   text-align: center;
-}
 
-.footer-bottom p {
-  margin: 0;
-  color: #bdc3c7;
-  font-size: 0.9rem;
+  p {
+    margin: 0;
+    color: #bdc3c7;
+    font-size: 0.9rem;
+  }
 }
 
 .social-icons {
   margin-top: 15px;
-}
 
-.social-icons a {
-  color: #ecf0f1;
-  margin: 0 10px;
-  font-size: 1.2rem;
-  transition: color 0.3s;
-}
+  a {
+    color: #ecf0f1;
+    margin: 0 10px;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+  }
 
-.social-icons a:hover {
-  color: #f39c12;
+  a:hover {
+    color: #f39c12;
+  }
 }
 
 .fas,
@@ -111,15 +101,27 @@ header {
   margin-right: 8px;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .footer-content {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
+.back-to-top {
+  width: 20px;
+  padding: 7px;
+  /* font-size: 16px; */
+  cursor: pointer;
+  /* color: #ffffff; */
+  background-color: #999;
+  /* margin-top: 15px; */
+  border-radius: 5px;
+  width: fit-content;
+  position: absolute;
+  right: 20px;
+  bottom: 50px;
 
-  .footer-section {
-    margin-bottom: 30px;
+  margin: 0 auto;
+  transition: background-color 0.3s;
+  .arrow-up {
+    width: 20px;
   }
+}
+
+.back-to-top:hover {
+  background-color: green;
 }

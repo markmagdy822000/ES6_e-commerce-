@@ -34,7 +34,7 @@ function build_navbar() {
     document.body.insertAdjacentElement("afterbegin", navbar)
 }
 
-function buid_footer() {
+function build_footer() {
     let footer = document.createElement("section")
     footer.innerHTML =
         //     `<footer class="minimal-footer">
@@ -73,7 +73,13 @@ function buid_footer() {
       <a href="#"><i class="fab fa-instagram"></i></a>
       <a href="#"><i class="fab fa-linkedin"></i></a>
     </div>
+    <!-- Back to Top Arrow -->
+    <div class="back-to-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
+      <img class="arrow-up" src="../images/arrow-up.svg">
+    </div>
   </div>
+
+
 </footer>`
     document.body.append(footer)
 }
@@ -107,7 +113,7 @@ function applyNavbarFunc() {
     goToCart()
     goToHome()
     applyLogout()
-    buid_footer()
+    build_footer()
 
 }
 
