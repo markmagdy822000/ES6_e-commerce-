@@ -83,12 +83,14 @@
 
 .card {
   width: 85%;
+  border: 1px solid black;
+  /* background-color: #eee; */
   object-fit: contain;
-  height: 450px;
+  height: 400px;
   margin: 20px auto;
   cursor: pointer;
   object-fit: contain;
-
+  text-align: center;
   img {
     height: 50%;
     object-fit: contain;
@@ -98,9 +100,9 @@
   }
   .add-btn {
     border: none;
-    background-color: #fff;
+    background: none;
     position: absolute;
-    bottom: 0px;
+    bottom: 18px;
     right: 0px;
     img {
       margin: 0 75%;
@@ -112,5 +114,23 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+}
+.add-btn svg {
+  /* border: 1px solid black; */
+  position: absolute;
+  bottom: 0px;
+  left: 0%;
+  transition: fill 0.3s;
+}
+.add-btn:hover svg {
+  fill: green;
+}
+@keyframes add_btn_change_color {
+  from {
+    fill: #000;
+  }
+  to {
+    fill: "green";
   }
 }

@@ -24,7 +24,6 @@ function updateItem(direction) {
         items[prevIndex].style.animation = `1s  center_right forwards`;
         items[index].style.animation = `1s left_center  forwards`;
     }
-
 }
 
 next_btn.addEventListener("click", () => updateItem("next"));
@@ -44,20 +43,22 @@ async function displayProducts(filterdProducts) {
         product_section.innerHTML = `
             <div class="col">
                 <div class="card" id="${prod.id}">
-                    <img src="${prod.images[0]}"  class="card-img-top" alt="">
+                <img src="${prod.images[0]}"  class="card-img-top" alt="">
                     <div class="card-body">
                         <div class="text-card">
                             <h5 class="truncate card-title">${prod.title}</h5>
-                            <span>rating: ${prod.rating.rate}</span><br>
-                            <span>views: ${prod.rating.count}</span>
+                            <span>Rating: ${prod.rating}</span><br>
+                            <span>In Stock: ${prod.stock}</span>
                         </div>
-                        <button class="add-btn"> <img src="../images/add.jpeg" class="w-25"> </button>
+                        <button class="w-50  me-3 add-btn">
+                            <svg class="w-25" viewBox="0 0 24 24" fill="#000">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
+                            </svg>
+                        </button>
                     </div>
-                </div>
+                </div>  
             </div>
         `
-
-
         product_section.querySelector(".add-btn").addEventListener("click", (e) => {
             e.stopPropagation();
             addToCartById(prod.id)
@@ -134,3 +135,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 intialdisplay()
 applyNavbarFunc()
+
+window.addEventListener("load",
+    () => setInterval(updateItem("next", 1000)
+    )
+)

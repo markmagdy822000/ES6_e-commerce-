@@ -1,4 +1,4 @@
-import { addToCartById, getCartProducts, getTotalCost, removeFromCartById } from "../js/helper.js"
+import { addToCartById, emptyCart, getCartProducts, getTotalCost, removeFromCartById } from "../js/helper.js"
 import { applyNavbarFunc } from "./build_components.js";
 
 let cart_container = document.querySelector('.cart-container');
@@ -15,6 +15,7 @@ function build_buyNow() {
     buyNow.setAttribute("class", "buyNow")
     buyNow.innerHTML = `<button  class=" btn btn-success w-100 h-100 ">Buy Now !</button>`
     buyNow.addEventListener("click", () => {
+        emptyCart()
         location.assign("../html/orderShipped.html")
     })
     cart_container.append(buyNow)
@@ -32,12 +33,12 @@ function buildCartProducts() {
 
 
         cart_product_section.innerHTML = `
-        <div id="${cart_product.id}" class="d-flex mt-5 ms-5  align-items-center  w-50 cart-product">
+        <div id="${cart_product.id}" class="d-flex justify-content-center align-items-center  w-50 cart-product">
         
         <div class=" col-6 d-flex align-items-center ">
         
-        <img class="ms-4 img w-25 mb-1" src="${cart_product.images[0]} " >
-        <span class="ms-4 name  ">${cart_product.title} </span>
+        <img class="ms-4 img w-25 col-1" src="${cart_product.images[0]} " >
+        <span class="ms-4 col-8 name  ">${cart_product.title} </span>
         
         <span class="m-4  price">${cart_product.price * cart_product.number_in_cart.toFixed(2)} </span>
             </div>
@@ -62,12 +63,7 @@ function buildCartProducts() {
 function addPlusFunctioanlity() {
     let plus_btns = document.querySelectorAll(".plus-icon")
     plus_btns.forEach(plus_btn => {
-
-        // console.log("plus_btn:", plus_btn)
         plus_btn.addEventListener("click", (e) => {
-            // console.log(e.target)
-            // console.log(e.target.closest(".cart-product"))
-            // console.log(e.target.closest(".cart-product").id)
             addToCartById(e.target.closest(".cart-product").id)
             buildCartProducts()
         })

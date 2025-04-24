@@ -3,11 +3,14 @@ html {
 }
 body {
   /* border: 1px solid black; */
-  width: 86%;
+  width: 100%;
   margin: 0 auto;
-  height: 50vh;
+  height: 100vh;
   .container {
-    height: 50vh;
+    /* margin: 70px auto 50px auto; */
+    margin-top: 118px;
+    margin-bottom: 100px;
+    height: 70vh;
     display: flex;
     justify-content: center;
     align-items: center;

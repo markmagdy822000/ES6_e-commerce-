@@ -95,5 +95,10 @@ function removeFromCartById(prodId) {
 
 
 }
+function emptyCart() {
+    storeInLocalStorage("cartProducts", [])
+
+}
+
 // addToCartById()
-export { storeInLocalStorage, getTotalCost, getCartProducts, removeFromCartById, addToCartById, getProductById, getFromLocalStorage }
+export { storeInLocalStorage, emptyCart, getTotalCost, getCartProducts, removeFromCartById, addToCartById, getProductById, getFromLocalStorage }

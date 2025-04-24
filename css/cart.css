@@ -1,10 +1,14 @@
 .cart-container {
   width: 80%;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   margin: 110px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   .cart-product {
-    margin: 0px auto;
-    width: 100%;
+    margin: 20px auto;
+    width: 80%;
     height: 100px;
     border-radius: 10px;
     font-weight: 700;
