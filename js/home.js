@@ -1,6 +1,6 @@
 
 import { build_navbar, goToCart, applyNavbarFunc } from "./build_components.js";
-import { addToCartById, getFromLocalStorage, getProducts, filterPrice } from "../js/helper.js";
+import { addToCartById, getFromLocalStorage, filterProducts, intialdisplay } from "../js/helper.js";
 
 /* ============= Carousel ============= */
 const next_btn = document.querySelector(".carousel-control-next");
@@ -117,21 +117,7 @@ function handleCheckBoxChange() {
     filterProducts(categories)
 }
 
-async function filterProducts(categories) {
-    let allProducts = await getProducts();
-    let filterdProducts = allProducts.filter((prod) => {
-        return (categories.indexOf(prod.category) !== -1)
-    })
 
-    console.log("filterdProducts: ", filterdProducts)
-    displayProducts(filterdProducts)
-    return filterdProducts;
-}
-
-async function intialdisplay() {
-    let proucts = await getProducts()
-    displayProducts(proucts)
-}
 
 document.addEventListener("DOMContentLoaded", () => {
     const products_section = document.querySelector(".products-section");
@@ -153,3 +139,4 @@ window.addEventListener("load",
     () => setInterval(updateItem("next", 1000)
     )
 )
+export { displayProducts }

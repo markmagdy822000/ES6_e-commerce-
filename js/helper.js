@@ -1,4 +1,4 @@
-
+import { displayProducts } from "../js/home.js"
 export async function getProducts() {
     // let products = await fetch("https://fakestoreapi.com/products")
     let products = await fetch("https://dummyjson.com/products")
@@ -57,18 +57,37 @@ function getCartProducts() {
     let cartProducts = getFromLocalStorage("cartProducts")
     if (!cartProducts) return []
     return cartProducts
-
 }
 
-function filterPrice(from, to) {
-    from = Number(from)
-    to = Number(to)
-    let products = getFromLocalStorage("allProducts")
-    let filteredProducts = products.filter(prod => {
-        return prod.price >= from && prod.price <= to;
+async function categoryFilter(products, categories) {
+
+    let filterdProducts = products.filter((prod) => {
+        return (categories.indexOf(prod.category) !== -1)
     })
-    // console.log(filteredProducts)
-    return filteredProducts;
+
+    console.log("filterdProducts: ", filterdProducts)
+    displayProducts(filterdProducts)
+    return filterdProducts;
+}
+
+async function intialdisplay() {
+    let products = getFromLocalStorage("allProducts")
+    displayProducts(products)
+}
+
+function filterProducts(categories, from, to) {
+    let allProducts = getFromLocalStorage("allProducts");
+
+    let filteredProducts = categoryFilter(allProducts, categories)
+
+    // =======filter price=======
+    // from = Number(from)
+    // to = Number(to)
+    // filteredProducts = products.filter(prod => {
+    //     return prod.price >= from && prod.price <= to;
+    // })
+    // // console.log(filteredProducts)
+    // return filteredProducts;
 }
 
 function getTotalCost() {
@@ -102,8 +121,6 @@ function removeFromCartById(prodId) {
     storeInLocalStorage("cartProducts", cartProducts)
     return true;
 
-
-
 }
 function emptyCart() {
     storeInLocalStorage("cartProducts", [])
@@ -111,4 +128,4 @@ function emptyCart() {
 }
 
 // addToCartById()
-export { storeInLocalStorage, filterPrice, emptyCart, getTotalCost, getCartProducts, removeFromCartById, addToCartById, getProductById, getFromLocalStorage }
+export { storeInLocalStorage, filterProducts, emptyCart, intialdisplay, getTotalCost, getCartProducts, removeFromCartById, addToCartById, getProductById, getFromLocalStorage }
