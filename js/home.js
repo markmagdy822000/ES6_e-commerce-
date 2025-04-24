@@ -14,10 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
     items.forEach(item => {
         item.classList.add("active");
     })
-    function updateItem(direction, index) {
+    function updateItem(direction) {
         let prevIndex = index;
         if (direction === "next") {
             index = (index + 1) % items.length;
+            console.log("items: ", items)
             items[prevIndex].style.animation = `1s center_left forwards`;
             items[index].style.animation = `1s right_center  forwards`;
         } else {
