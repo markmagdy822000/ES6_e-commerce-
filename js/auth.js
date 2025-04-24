@@ -43,6 +43,7 @@ function isUserExists(email, password) {
 
 function logout() {
     console.log("from auth")
+    localStorage.setItem("cartProducts", [])
     location.replace("../html/login.html")
 }
 

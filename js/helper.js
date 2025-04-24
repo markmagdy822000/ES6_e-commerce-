@@ -1,6 +1,7 @@
 import { displayProducts } from "../js/home.js"
+import { updateCartCount } from "../js/build_components.js"
+
 export async function getProducts() {
-    // let products = await fetch("https://fakestoreapi.com/products")
     let products = await fetch("https://dummyjson.com/products")
 
     if (!products)
@@ -43,6 +44,7 @@ function addToCartById(productId) {
 
     storeInLocalStorage("cartProducts", cartProducts)
     console.log(getFromLocalStorage("cartProducts"))
+    updateCartCount()
 }
 
 function getProductById(prodId) {
@@ -92,7 +94,7 @@ async function filterProducts(categories, from, to) {
 }
 
 function getTotalCost() {
-    let cartProds = getFromLocalStorage("cartProducts")
+    let cartProds = getFromLocalStorage("cartProducts") || []
     console.log("from gettotatl cost: ", cartProds)
     let sum = 0;
     cartProds.forEach(prod => {
@@ -128,5 +130,5 @@ function emptyCart() {
 
 }
 
-// addToCartById()
+
 export { storeInLocalStorage, filterProducts, emptyCart, intialdisplay, getTotalCost, getCartProducts, removeFromCartById, addToCartById, getProductById, getFromLocalStorage }

@@ -1,5 +1,5 @@
 
-import { build_navbar, goToCart, applyNavbarFunc } from "./build_components.js";
+import { applyNavbarFunc } from "./build_components.js";
 import { addToCartById, getFromLocalStorage, filterProducts, intialdisplay } from "../js/helper.js";
 
 /* ============= Carousel ============= */
@@ -39,18 +39,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let listGp = document.querySelectorAll(".list-group input[type='checkbox']");
 
-    document.addEventListener("DOMContentLoaded", () => {
-        const products_section = document.querySelector(".products-section");
 
-        products_section.addEventListener("click", (e) => {
-            const clickedCard = e.target.closest(".card");
-            if (clickedCard) {
-                localStorage.setItem("prodId", clickedCard.id);
-                location.assign("../html/details.html");
-            }
-        });
+    const products_section = document.querySelector(".products-section");
 
+    products_section.addEventListener("click", (e) => {
+        const clickedCard = e.target.closest(".card");
+        if (clickedCard) {
+            localStorage.setItem("prodId", clickedCard.id);
+            location.assign("../html/details.html");
+        }
     });
+
+
 
     intialdisplay()
     applyNavbarFunc()

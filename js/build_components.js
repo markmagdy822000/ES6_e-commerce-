@@ -3,9 +3,14 @@ import { getFromLocalStorage } from "../js/helper.js";
 
 function build_navbar() {
     let navbar = document.createElement("nav")
-    let loggedUser = getFromLocalStorage("loggedUser");
 
-    navbar.innerHTML = ` <header class="">
+    let loggedUser = getFromLocalStorage("loggedUser");
+    let cartCount = getFromLocalStorage("cartProducts");
+    console.log("cartCount: ", cartCount)
+    cartCount ? "" : cartCount = [];
+    // while (!cartCount) { }
+
+    navbar.innerHTML = `<header class="">
         <ul class="nav nav-pills nav-fill">
             <li class="nav-item">
                 <a class="nav-link active home-page" aria-current="page" href="#">Home</a>
@@ -15,9 +20,10 @@ function build_navbar() {
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">
-
+                <span class="badge text-bg-danger rounded-pill notification">   ${cartCount.length} </span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
                         class="bi bi-cart3 cart-icon" viewBox="0 0 16 16">
+                        
                         <path   
                             d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
                     </svg>
@@ -33,13 +39,16 @@ function build_navbar() {
     </header>`
     document.body.insertAdjacentElement("afterbegin", navbar)
 }
-
+function updateCartCount() {
+    let cartCount = getFromLocalStorage("cartProducts").length;
+    let notificationElement = document.querySelector('.notification');
+    if (notificationElement) {
+        notificationElement.textContent = cartCount;
+    }
+}
 function build_footer() {
     let footer = document.createElement("section")
     footer.innerHTML =
-        //     `<footer class="minimal-footer">
-        //     <p>&copy; 2023 YourStore</p>
-        // </footer>`
         `<footer class="site-footer">
   <div class="footer-content">
     <div class="footer-section">
@@ -117,4 +126,4 @@ function applyNavbarFunc() {
 
 }
 
-export { build_navbar, applyNavbarFunc, applyLogout, goToCart, goToHome }
+export { build_navbar, updateCartCount, applyNavbarFunc, applyLogout, goToCart, goToHome }

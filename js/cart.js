@@ -29,9 +29,6 @@ function buildCartProducts() {
 
         let cart_product_section = document.createElement("div")
 
-        console.log("from cart.js ", cart_product.images[0])
-
-
         cart_product_section.innerHTML = `
         <div id="${cart_product.id}" class="d-flex justify-content-center align-items-center  w-50 cart-product">
         
