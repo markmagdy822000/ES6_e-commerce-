@@ -17,6 +17,11 @@
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
     border: 1px solid black;
     overflow: hidden;
+    img {
+      object-fit: contain;
+      height: 100px;
+      width: 100px;
+    }
   }
 }
 

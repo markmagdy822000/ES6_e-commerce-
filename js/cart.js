@@ -28,13 +28,13 @@ function buildCartProducts() {
     cart_products.forEach(cart_product => {
 
         let cart_product_section = document.createElement("div")
-
+        cart_product_section.classList.add("col-12")
         cart_product_section.innerHTML = `
-        <div id="${cart_product.id}" class="d-flex justify-content-center align-items-center  w-50 cart-product">
+        <div id="${cart_product.id}" class=" d-flex justify-content-center align-items-center  w-50 cart-product">
         
         <div class=" col-6 d-flex align-items-center ">
         
-        <img class="ms-4 img w-25 col-1" src="${cart_product.images[0]} " >
+        <img class="ms-4  col-1" src="${cart_product.images[0]} " >
         <span class="ms-4 col-8 name  ">${cart_product.title} </span>
         
         <span class="m-4  price">${cart_product.price * cart_product.number_in_cart.toFixed(2)} </span>

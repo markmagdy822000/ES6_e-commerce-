@@ -2,10 +2,15 @@ import { displayProducts } from "../js/home.js"
 import { updateCartCount } from "../js/build_components.js"
 
 export async function getProducts() {
-    let products = await fetch("https://dummyjson.com/products")
+    let products = getFromLocalStorage("allProducts")
 
-    if (!products)
-        return `No products Found!`;
+    if (!products) {
+        console.log("Fetching Products")
+        products = await fetch("https://dummyjson.com/products")
+    } else {
+        console.log("Products are found NO FETCH IS NEEDED 😃")
+    }
+
     products = await ((products.json()))
     products = products.products
     console.log(products)
@@ -71,9 +76,8 @@ async function categoryFilter(products, categories) {
     return filterdProducts;
 }
 
-async function intialdisplay() {
+function intialdisplay() {
     let products = getFromLocalStorage("allProducts")
-
 }
 function priceFilter(products, from = 0, to = 10000000) {
     let filterdProducts = products.filter((prod) => {

@@ -1,4 +1,3 @@
-
 import { applyNavbarFunc } from "./build_components.js";
 import { addToCartById, getFromLocalStorage, filterProducts, intialdisplay } from "../js/helper.js";
 
@@ -14,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     items.forEach(item => {
         item.classList.add("active");
     })
+
     function updateItem(direction) {
         let prevIndex = index;
         if (direction === "next") {
@@ -33,7 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ================= Cards ===============
     displayProducts(getFromLocalStorage("allProducts"))
-
     uponFromChange()
     buildFilter()
 
@@ -51,7 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-
     intialdisplay()
     applyNavbarFunc()
 
@@ -65,8 +63,9 @@ function getAllCategories() {
     })
 
     return categories;
-
 }
+
+
 async function displayProducts(filterdProducts) {
     let products_section = document.getElementsByClassName("products-section")[0]
     products_section.innerHTML = ""
@@ -145,8 +144,8 @@ async function buildFilter() {
 
     // ======== price ==========
     let priceDiv = document.createElement("div")
-    priceDiv.innerHTML = `<label class="input"  for= "fromPriceFilter"> From</label > <input id="fromPriceFilter" type=number /> 
-    <label class="input" for= "toPriceFilter"> To </label > <input id="toPriceFilter" type=number />`
+    priceDiv.innerHTML = `<label class="input"  for= "fromPriceFilter"> From</label > <input class="m-1 mt-3" id="fromPriceFilter" type=number /> <br 
+    <label class="input" for= "toPriceFilter"> To </label > <input id="toPriceFilter" class="m-3 ms-4 " type=number />`
     list_group.append(priceDiv)
 
 }
