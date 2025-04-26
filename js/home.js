@@ -37,8 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
     buildFilter()
 
     let listGp = document.querySelectorAll(".list-group input[type='checkbox']");
-
-
     const products_section = document.querySelector(".products-section");
 
     products_section.addEventListener("click", (e) => {
@@ -83,7 +81,7 @@ async function displayProducts(filterdProducts) {
                         <h5 class="truncate card-title">${prod.title}</h5>
                         <span>Rating: ${prod.rating}</span><br>
                         <span>In Stock: ${prod.stock}</span><br>
-                        <span>In Price: ${prod.price}</span>
+                        <span>Price: ${prod.price}$</span>
                     </div>
                     <button class="w-50  me-3 add-btn">
                         <svg class="w-25" viewBox="0 0 24 24" fill="#000">
@@ -149,5 +147,7 @@ async function buildFilter() {
     list_group.append(priceDiv)
 
 }
+
+
 
 export { displayProducts }
