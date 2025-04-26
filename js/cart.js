@@ -72,12 +72,7 @@ function addMinusFunctioanlity() {
 
     minus_btns.forEach(plus_btn => {
 
-        // console.log("plus_btn:", plus_btn)
         plus_btn.addEventListener("click", (e) => {
-
-            // console.log(e.target)
-            // console.log(e.target.closest(".cart-product"))
-            // console.log(e.target.closest(".cart-product").id)
             removeFromCartById(e.target.closest(".cart-product").id)
             buildCartProducts()
         })

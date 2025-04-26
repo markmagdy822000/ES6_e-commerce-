@@ -5,7 +5,6 @@ export async function getProducts() {
     let products = getFromLocalStorage("allProducts")
 
     if (!products) {
-        console.log("Fetching Products")
         products = await fetch("https://dummyjson.com/products")
     } else {
         console.log("Products are found NO FETCH IS NEEDED 😃")
@@ -13,7 +12,6 @@ export async function getProducts() {
 
     products = await ((products.json()))
     products = products.products
-    console.log(products)
     products.forEach(product => {
         product.number_in_cart = 0
     });
@@ -22,7 +20,6 @@ export async function getProducts() {
 }
 
 function storeInLocalStorage(key, value) {
-    console.log("storinnng", key, value)
     localStorage.setItem(key, JSON.stringify(value))
 }
 
@@ -48,7 +45,6 @@ function addToCartById(productId) {
     };
 
     storeInLocalStorage("cartProducts", cartProducts)
-    console.log(getFromLocalStorage("cartProducts"))
     updateCartCount()
 }
 
@@ -71,7 +67,7 @@ async function categoryFilter(products, categories) {
     let filterdProducts = products.filter((prod) => {
         return (categories.indexOf(prod.category) !== -1)
     })
-    console.log("filterd, ", filterProducts)
+
     // displayProducts(filterdProducts)
     return filterdProducts;
 }
@@ -87,7 +83,7 @@ function priceFilter(products, from = 0, to = 10000000) {
 }
 
 async function filterProducts(categories, from, to) {
-    console.log("prices, ->", from, to)
+
     let products = getFromLocalStorage("allProducts");
     from = from || 0;
     to = to || 10000;
@@ -99,7 +95,7 @@ async function filterProducts(categories, from, to) {
 
 function getTotalCost() {
     let cartProds = getFromLocalStorage("cartProducts") || []
-    console.log("from gettotatl cost: ", cartProds)
+
     let sum = 0;
     cartProds.forEach(prod => {
         sum += prod.number_in_cart * prod.price;
@@ -107,16 +103,16 @@ function getTotalCost() {
     return sum.toFixed(2);
 }
 function removeFromCartById(prodId) {
-    console.log("from remove funciton")
+
     let cartProducts = getFromLocalStorage("cartProducts")
 
     let index = cartProducts.findIndex((cart_prod) => {
 
         return cart_prod.id === Number(prodId);
     })
-    console.log("index: ", index)
+
     if (index === -1) {
-        console.log(`product not found`)
+
         return false;
     }
     if (cartProducts[index].number_in_cart === 1) {

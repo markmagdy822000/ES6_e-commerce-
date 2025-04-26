@@ -6,7 +6,6 @@ function build_navbar() {
 
     let loggedUser = getFromLocalStorage("loggedUser");
     let cartCount = getFromLocalStorage("cartProducts");
-    console.log("cartCount: ", cartCount)
     cartCount ? "" : cartCount = [];
     // while (!cartCount) { }
 
@@ -95,7 +94,6 @@ function build_footer() {
 
 function goToCart() {
     let cart_icon = document.querySelector(".cart-icon")
-    console.log("cart_icon:", cart_icon)
     cart_icon.addEventListener("click", () => {
         location.assign("../html/cart.html")
     })
@@ -110,7 +108,6 @@ function goToHome() {
 }
 
 function applyLogout() {
-    console.log("from applyloggin out")
     let logout_icon = document.querySelector(".logout")
     logout_icon.addEventListener("click", () => {
         logout()

@@ -3,7 +3,7 @@ import { addToCartById, getFromLocalStorage, filterProducts, intialdisplay } fro
 
 /* ============= Carousel ============= */
 document.addEventListener('DOMContentLoaded', () => {
-    console.log(".carousel-control-next =>> ", document.querySelector(".carousel-control-next"))
+
     const next_btn = document.querySelector(".carousel-control-next");
     const prev_btn = document.querySelector(".carousel-control-prev");
     const carousel_inner = document.querySelector(".carousel-inner");
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let prevIndex = index;
         if (direction === "next") {
             index = (index + 1) % items.length;
-            console.log("items: ", items)
+
             items[prevIndex].style.animation = `1s center_left forwards`;
             items[index].style.animation = `1s right_center  forwards`;
         } else {
@@ -68,10 +68,11 @@ async function displayProducts(filterdProducts) {
     let products_section = document.getElementsByClassName("products-section")[0]
     products_section.innerHTML = ""
     let products = await filterdProducts
-    console.log("products: ", products)
+
 
     await products.forEach(prod => {
         let product_section = document.createElement("div")
+
         product_section.innerHTML = `
         <div class="col">
             <div class="card" id="${prod.id}">
@@ -116,7 +117,6 @@ function uponFromChange() {
 
     form.addEventListener("change", async () => {
         let allCategories = getAllCategories()
-        console.log("allCategories: ", allCategories)
 
         // price
         let fromIn = document.getElementById("fromPriceFilter")

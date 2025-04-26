@@ -6,9 +6,7 @@ function getUserByEmail(email) {
     let myUser = getUsers().find(user => {
         let res = user.email == email
         return res
-        console.log("comapring names ", user.email, email, "___ res:", res)
     })
-    console.log("myUser: ", myUser)
     return myUser ? myUser : {}
 }
 
@@ -21,11 +19,6 @@ function addUserAccount(nameIn, emailIn, passIn) {
     let usersObj = { "name": name, "email": email, "password": password }
 
     let users = getUsers()
-    // if (isUserExists(email, password)) {
-    //     document.getElementsByClassName("error-register")[0].innerText = "user already exists"
-    //     document.getElementById("submit").setAttribute("onclick", `${(event) => event.target.preventDefault()}`)
-    //     console.log("user Exists")
-    // }
     users.push(usersObj)
 
 
@@ -42,7 +35,6 @@ function isUserExists(email, password) {
 }
 
 function logout() {
-    console.log("from auth")
     localStorage.setItem("cartProducts", [])
     location.replace("../html/login.html")
 }

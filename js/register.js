@@ -54,7 +54,7 @@ reg_form.addEventListener("submit", (e) => {
         } else {
             document.getElementsByClassName("error-register")[0].innerText = "user already exists"
             document.getElementsByClassName("error-register")[0].style.display = "block"
-            console.log("user exists")
+
         }
     }
 })
